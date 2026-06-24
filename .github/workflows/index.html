@@ -1,0 +1,727 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>CartForge | Forge Your Aesthetic — Artisan Eats & Crafts</title>
+    <!-- Google Fonts & simple reset -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+    <!-- Font Awesome 6 (icons) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #fefaf5;
+            color: #1f2a24;
+            scroll-behavior: smooth;
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 32px;
+        }
+
+        /* header / navigation */
+        .site-header {
+            background: #ffffffdd;
+            backdrop-filter: blur(14px);
+            background: rgba(255, 255, 245, 0.96);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid #f0e2d2;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.02);
+        }
+
+        .header-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            padding: 18px 0;
+        }
+
+        .logo-area {
+            display: flex;
+            align-items: baseline;
+            gap: 8px;
+        }
+
+        .logo-icon {
+            font-size: 30px;
+            color: #d97706;
+        }
+
+        .logo {
+            font-size: 1.9rem;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            background: linear-gradient(130deg, #2c4b32, #b45309);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            font-weight: 500;
+            color: #2f3e32;
+            transition: 0.2s;
+            font-size: 0.98rem;
+        }
+
+        .nav-links a:hover {
+            color: #d97706;
+        }
+
+        .cart-icon {
+            position: relative;
+            font-size: 1.4rem;
+        }
+
+        .cart-badge {
+            position: absolute;
+            top: -9px;
+            right: -12px;
+            background: #d97706;
+            color: white;
+            font-size: 0.7rem;
+            font-weight: 700;
+            border-radius: 30px;
+            padding: 2px 6px;
+            min-width: 18px;
+            text-align: center;
+        }
+
+        /* hero section - different main image */
+        .hero {
+            background: #fff7ef;
+            padding: 55px 0 70px;
+        }
+
+        .hero-grid {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 48px;
+        }
+
+        .hero-content {
+            flex: 1.2;
+        }
+
+        .hero-badge {
+            background: #e9ddd0;
+            display: inline-block;
+            padding: 6px 16px;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: #b45a1c;
+            margin-bottom: 24px;
+        }
+
+        .hero-content h1 {
+            font-size: 3.3rem;
+            font-weight: 800;
+            line-height: 1.2;
+            letter-spacing: -0.02em;
+            color: #292215;
+            margin-bottom: 20px;
+        }
+
+        .hero-highlight {
+            color: #d97706;
+            border-bottom: 3px solid #f7bc6e;
+        }
+
+        .hero-desc {
+            font-size: 1.1rem;
+            color: #544c3f;
+            max-width: 90%;
+            margin: 20px 0 32px;
+            line-height: 1.5;
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 18px;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            background: #2c4b32;
+            color: white;
+            padding: 12px 28px;
+            border-radius: 44px;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            transition: 0.25s;
+        }
+
+        .btn-primary:hover {
+            background: #1c3522;
+            transform: translateY(-2px);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 1.5px solid #2c4b32;
+            padding: 12px 28px;
+            border-radius: 44px;
+            font-weight: 600;
+            color: #2c4b32;
+            text-decoration: none;
+            transition: 0.2s;
+        }
+
+        .btn-outline:hover {
+            background: #f5ede3;
+            border-color: #d97706;
+            color: #d97706;
+        }
+
+        .hero-image {
+            flex: 1;
+            border-radius: 44px;
+            overflow: hidden;
+            box-shadow: 0 25px 35px -18px rgba(0,0,0,0.2);
+            transition: all 0.3s;
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+            object-fit: cover;
+        }
+
+        /* features */
+        .features {
+            padding: 70px 0 40px;
+            background: white;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 48px;
+            color: #2c4b32;
+        }
+
+        .features-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            justify-content: center;
+        }
+
+        .feature-card {
+            background: #fef8f2;
+            padding: 30px 22px;
+            border-radius: 32px;
+            flex: 1;
+            min-width: 190px;
+            text-align: center;
+            border: 1px solid #efe0d0;
+            transition: 0.2s;
+        }
+
+        .feature-card i {
+            font-size: 2.3rem;
+            color: #d97706;
+            margin-bottom: 18px;
+        }
+
+        /* product grid — all different high-quality images */
+        .products {
+            padding: 60px 0 80px;
+            background: #fffcf8;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(275px, 1fr));
+            gap: 34px;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 32px;
+            overflow: hidden;
+            transition: all 0.25s;
+            box-shadow: 0 6px 14px rgba(0, 0, 0, 0.03);
+            border: 1px solid #f0e3d6;
+        }
+
+        .product-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 24px 32px -12px rgba(0, 0, 0, 0.12);
+            border-color: #e1cfbb;
+        }
+
+        .product-img {
+            width: 100%;
+            height: 270px;
+            object-fit: cover;
+            background: #f3ede6;
+            transition: transform 0.4s ease;
+        }
+
+        .product-card:hover .product-img {
+            transform: scale(1.02);
+        }
+
+        .product-info {
+            padding: 22px 20px 26px;
+        }
+
+        .product-category {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: #c0641a;
+            font-weight: 700;
+        }
+
+        .product-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin: 10px 0 12px;
+            color: #2c2a24;
+        }
+
+        .price-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 18px;
+        }
+
+        .price {
+            font-weight: 800;
+            font-size: 1.35rem;
+            color: #2c4b32;
+        }
+
+        .add-cart {
+            background: #f4ede5;
+            border: none;
+            border-radius: 40px;
+            padding: 8px 16px;
+            font-weight: 600;
+            font-size: 0.8rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            transition: 0.2s;
+            color: #2c4b32;
+        }
+
+        .add-cart:hover {
+            background: #d97706;
+            color: white;
+        }
+
+        /* spotlight banner with different image */
+        .spotlight {
+            margin: 20px 20px 60px;
+            border-radius: 56px;
+            background: #fef0e2;
+            overflow: hidden;
+        }
+
+        .spotlight-inner {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 28px;
+            padding: 32px 40px;
+        }
+
+        .spotlight-img {
+            flex: 1;
+            min-width: 220px;
+            border-radius: 36px;
+            overflow: hidden;
+        }
+
+        .spotlight-img img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 28px;
+        }
+
+        .spotlight-content {
+            flex: 1.5;
+        }
+
+        .spotlight-content h3 {
+            font-size: 1.9rem;
+            font-weight: 800;
+            color: #2c3e24;
+        }
+
+        /* newsletter */
+        .newsletter {
+            background: #1f3327;
+            color: white;
+            padding: 64px 0;
+            text-align: center;
+        }
+
+        .newsletter h3 {
+            font-size: 1.8rem;
+            margin-bottom: 14px;
+        }
+
+        .news-form {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 24px;
+        }
+
+        .news-form input {
+            padding: 14px 24px;
+            border-radius: 60px;
+            border: none;
+            width: 280px;
+            font-size: 1rem;
+        }
+
+        .news-form button {
+            background: #d97706;
+            border: none;
+            padding: 14px 30px;
+            border-radius: 60px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: 0.2s;
+            color: white;
+        }
+
+        footer {
+            background: #141f19;
+            color: #cfd8cf;
+            padding: 44px 0 28px;
+        }
+
+        .footer-grid {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 40px;
+        }
+
+        .footer-copyright {
+            text-align: center;
+            margin-top: 42px;
+            font-size: 0.75rem;
+            opacity: 0.7;
+        }
+
+        @media (max-width: 780px) {
+            .hero-content h1 {
+                font-size: 2.2rem;
+            }
+            .hero-desc {
+                max-width: 100%;
+            }
+            .header-inner {
+                flex-direction: column;
+                gap: 14px;
+            }
+            .container {
+                padding: 0 20px;
+            }
+            .spotlight-inner {
+                padding: 28px 20px;
+            }
+        }
+    </style>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-NTV0NLN2X5"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+
+gtag('config', 'G-NTV0NLN2X5');
+</script>
+</head>
+<body>
+
+<header class="site-header">
+    <div class="container header-inner">
+        <div class="logo-area">
+            <i class="fas fa-fire logo-icon"></i>
+            <div class="logo">CartForge</div>
+        </div>
+        <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="privacy.html">Privacy</a>
+      <a href="terms.html">Terms</a>
+      <a href="about.html">About Us</a>
+            <a href="#" class="cart-icon">
+                <i class="fas fa-bag-shopping"></i>
+                <span class="cart-badge">2</span>
+            </a>
+        </div>
+    </div>
+</header>
+
+<main>
+    <!-- Hero section: UNIQUE image (ferris wheel / artisan view) -->
+    <section class="hero">
+        <div class="container hero-grid">
+            <div class="hero-content">
+                <div class="hero-badge"><i class="fas fa-gem"></i> Hand forged since 2024</div>
+                <h1>Shape your world with <span class="hero-highlight">CartForge</span> originals</h1>
+                <p class="hero-desc">Discover rare ceramics, forged tools, woven textiles, and limited drops — every image tells a different story. Craft meets soul.</p>
+                <div class="btn-group">
+                    <a href="#" class="btn-primary">Discover Studio <i class="fas fa-arrow-right"></i></a>
+                    <a href="#" class="btn-outline"><i class="fas fa-eye"></i> Lookbook</a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <!-- DIFFERENT HERO IMAGE: artisan pottery display -->
+                <img src="https://picsum.photos/id/29/600/480" alt="CartForge artisan studio" loading="eager">
+            </div>
+        </div>
+    </section>
+
+    <!-- Features row -->
+    <section class="features">
+        <div class="container">
+            <h2 class="section-title">Built by makers, for you</h2>
+            <div class="features-grid">
+                <div class="feature-card"><i class="fas fa-hand-sparkles"></i><h3>Handcrafted ethics</h3><p>Every piece signed by its creator.</p></div>
+                <div class="feature-card"><i class="fas fa-tree"></i><h3>Earth-first</h3><p>Zero-waste packaging + recycled metals.</p></div>
+                <div class="feature-card"><i class="fas fa-truck-fast"></i><h3>Express forging</h3><p>Free shipping over $65, quick turnaround.</p></div>
+                <div class="feature-card"><i class="fas fa-palette"></i><h3>Custom forge</h3><p>Personalize colors & engravings.</p></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PRODUCT GRID: 6 completely different high-res images (various IDs) -->
+    <section class="products">
+        <div class="container">
+            <h2 class="section-title">✦ Latest from the forge ✦</h2>
+            <div class="product-grid">
+                <!-- 1 - ceramic bowl set -->
+                <div class="product-card">
+                    <img class="product-img" src="https://picsum.photos/id/36/400/380" alt="Handmade ceramic bowl" loading="lazy">
+                    <div class="product-info">
+                        <div class="product-category">Stoneware</div>
+                        <div class="product-title">Ember Bowl Trio</div>
+                        <div class="price-row"><span class="price">$64</span><button class="add-cart"><i class="fas fa-plus-circle"></i> Add</button></div>
+                    </div>
+                </div>
+                <!-- 2 - metalwork hammered tray (different) -->
+                <div class="product-card">
+                    <img class="product-img" src="https://picsum.photos/id/101/400/380" alt="Hammered metal tray" loading="lazy">
+                    <div class="product-info">
+                        <div class="product-category">Metal Forge</div>
+                        <div class="product-title">Riveted Catchall</div>
+                        <div class="price-row"><span class="price">$89</span><button class="add-cart"><i class="fas fa-plus-circle"></i> Add</button></div>
+                    </div>
+                </div>
+                <!-- 3 - woven wall hanging (different) -->
+                <div class="product-card">
+                    <img class="product-img" src="https://picsum.photos/id/112/400/380" alt="Woven macrame art" loading="lazy">
+                    <div class="product-info">
+                        <div class="product-category">Textile</div>
+                        <div class="product-title">Nomad Tapestry</div>
+                        <div class="price-row"><span class="price">$112</span><button class="add-cart"><i class="fas fa-plus-circle"></i> Add</button></div>
+                    </div>
+                </div>
+                <!-- 4 - hand-dipped candles (different) -->
+                <div class="product-card">
+                    <img class="product-img" src="https://picsum.photos/id/41/400/380" alt="Hand dipped candles" loading="lazy">
+                    <div class="product-info">
+                        <div class="product-category">Home & Atmosphere</div>
+                        <div class="product-title">Forge Flame Set</div>
+                        <div class="price-row"><span class="price">$38</span><button class="add-cart"><i class="fas fa-plus-circle"></i> Add</button></div>
+                    </div>
+                </div>
+                <!-- 5 - hand-stitched leather pouch (different) -->
+                <div class="product-card">
+                    <img class="product-img" src="https://picsum.photos/id/96/400/380" alt="Leather artisan pouch" loading="lazy">
+                    <div class="product-info">
+                        <div class="product-category">Leather Goods</div>
+                        <div class="product-title">Patina Pouch</div>
+                        <div class="price-row"><span class="price">$54</span><button class="add-cart"><i class="fas fa-plus-circle"></i> Add</button></div>
+                    </div>
+                </div>
+                <!-- 6 - wooden sculptural object (different) -->
+                <div class="product-card">
+                    <img class="product-img" src="https://picsum.photos/id/66/400/380" alt="Carved wooden decor" loading="lazy">
+                    <div class="product-info">
+                        <div class="product-category">Woodcraft</div>
+                        <div class="product-title">Driftwood Sculpture</div>
+                        <div class="price-row"><span class="price">$147</span><button class="add-cart"><i class="fas fa-plus-circle"></i> Add</button></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SPOTLIGHT SEGMENT with completely new image (not used elsewhere) -->
+    <div class="spotlight">
+        <div class="spotlight-inner container" style="max-width: 1280px; margin: auto;">
+            <div class="spotlight-img">
+                <img src="https://picsum.photos/id/22/500/420" alt="artisan working at forge bench" loading="lazy">
+            </div>
+            <div class="spotlight-content">
+                <h3><i class="fas fa-certificate"></i> The Foundry Edit</h3>
+                <p style="font-size: 1.05rem; margin: 12px 0 20px; color: #4e3b2a;">Curated by master craftspeople — each object in this capsule carries a unique patina and serial number. Limited batch of 50 pieces worldwide. </p>
+                <a href="#" class="btn-primary" style="background:#a75915;">Claim your piece →</a>
+            </div>
+        </div>
+    </div>
+
+</main>
+
+<footer>
+    <div class="container">
+        <div class="footer-grid">
+            <div><i class="fas fa-hammer"></i> <strong>CartForge</strong><br/>© 2026 · forge code</div>
+            <div>Collections<br/>Custom forge<br/>Gift cards<br/>Sustainability</div>
+            <div>Help center<br/>Returns<br/>Contact studio<br/>Press</div>
+            <div><i class="fab fa-instagram"></i> <i class="fab fa-pinterest"></i> <i class="fab fa-tiktok"></i> <i class="fab fa-youtube"></i></div>
+        </div>
+        <div class="footer-copyright">Handcrafted world · All images showcase unique pieces from our global maker community.</div>
+    </div>
+</footer>
+
+<script>
+    // interactive CartForge - dynamic cart badge, different images handling
+    let cartQuantity = 2;  // initial badge shows 2
+    const badgeSpan = document.querySelector('.cart-badge');
+    const addBtns = document.querySelectorAll('.add-cart');
+
+    function updateBadge() {
+        if (badgeSpan) {
+            badgeSpan.innerText = cartQuantity;
+            if (cartQuantity > 0) {
+                badgeSpan.style.display = 'inline-block';
+            } else {
+                badgeSpan.style.display = 'none';
+            }
+        }
+    }
+
+    // toast notif
+    function showToast(msg, type = 'success') {
+        const toastDiv = document.createElement('div');
+        toastDiv.innerText = msg;
+        toastDiv.style.position = 'fixed';
+        toastDiv.style.bottom = '28px';
+        toastDiv.style.left = '50%';
+        toastDiv.style.transform = 'translateX(-50%)';
+        toastDiv.style.backgroundColor = type === 'success' ? '#2c4b32' : '#b45309';
+        toastDiv.style.color = 'white';
+        toastDiv.style.padding = '12px 28px';
+        toastDiv.style.borderRadius = '50px';
+        toastDiv.style.fontWeight = '500';
+        toastDiv.style.zIndex = '1000';
+        toastDiv.style.fontSize = '0.9rem';
+        toastDiv.style.backdropFilter = 'blur(8px)';
+        toastDiv.style.boxShadow = '0 8px 20px rgba(0,0,0,0.2)';
+        toastDiv.style.fontFamily = "'Inter', sans-serif";
+        document.body.appendChild(toastDiv);
+        setTimeout(() => {
+            toastDiv.style.opacity = '0';
+            setTimeout(() => toastDiv.remove(), 400);
+        }, 2100);
+    }
+
+    addBtns.forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            e.preventDefault();
+            const parentCard = btn.closest('.product-card');
+            let productTitle = 'Item';
+            if (parentCard) {
+                const titleElem = parentCard.querySelector('.product-title');
+                if (titleElem) productTitle = titleElem.innerText;
+            }
+            cartQuantity += 1;
+            updateBadge();
+            showToast(`🛒 ${productTitle} added · cart now has ${cartQuantity} items`);
+            // mini animation on badge
+            if (badgeSpan) {
+                badgeSpan.style.transform = 'scale(1.2)';
+                setTimeout(() => { if(badgeSpan) badgeSpan.style.transform = ''; }, 180);
+            }
+        });
+    });
+
+    // Newsletter subscription with validation & different interaction
+    const newsBtn = document.getElementById('submitNewsBtn');
+    const newsInput = document.getElementById('newsEmailField');
+    if (newsBtn) {
+        newsBtn.addEventListener('click', () => {
+            const emailValue = newsInput.value.trim();
+            if (!emailValue || !emailValue.includes('@') || !emailValue.includes('.')) {
+                showToast('✧ Please enter a valid email address to forge creativity.', 'error');
+                return;
+            }
+            showToast(`🔥 Thanks! ${emailValue.split('@')[0]}, you're now a Forge member. Check your inbox.`);
+            newsInput.value = '';
+        });
+    }
+
+    // additional hover demo for hero image, just for flair
+    const heroImgDiv = document.querySelector('.hero-image');
+    if (heroImgDiv) {
+        heroImgDiv.addEventListener('mouseenter', () => {
+            heroImgDiv.style.boxShadow = '0 28px 38px -16px rgba(0,0,0,0.25)';
+        });
+        heroImgDiv.addEventListener('mouseleave', () => {
+            heroImgDiv.style.boxShadow = '0 25px 35px -18px rgba(0,0,0,0.2)';
+        });
+    }
+
+    // set initial badge
+    updateBadge();
+
+    // small console output: all images are distinct and showcase different products
+    console.log('CartForge launched — multiple unique images displayed: hero (id29), product images (id36,101,112,41,96,66) and spotlight (id22)');
+</script>
+
+    <!-- Histats.com  (div with counter) --><div id="histats_counter"></div>
+<!-- Histats.com  START  (aync)-->
+<script type="text/javascript">var _Hasync= _Hasync|| [];
+_Hasync.push(['Histats.start', '1,5033569,4,511,95,18,00000000']);
+_Hasync.push(['Histats.fasi', '1']);
+_Hasync.push(['Histats.track_hits', '']);
+(function() {
+var hs = document.createElement('script'); hs.type = 'text/javascript'; hs.async = true;
+hs.src = ('//s10.histats.com/js15_as.js');
+(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(hs);
+})();</script>
+<noscript><a href="/" target="_blank"><img  src="//sstatic1.histats.com/0.gif?5033569&101" alt="web log free" border="0"></a></noscript>
+<!-- Histats.com  END  -->
+</body>
+</html>

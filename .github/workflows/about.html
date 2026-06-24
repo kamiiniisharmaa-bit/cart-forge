@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>CartForge | About Us — The Soul of Handcraft</title>
+    <!-- Google Fonts & simple reset -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+    <!-- Font Awesome 6 (icons) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #fefaf5;
+            color: #1f2a24;
+            line-height: 1.5;
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 32px;
+        }
+
+        /* header navigation */
+        .site-header {
+            background: #ffffffdd;
+            backdrop-filter: blur(14px);
+            background: rgba(255, 255, 245, 0.96);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid #f0e2d2;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.02);
+        }
+
+        .header-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            padding: 18px 0;
+        }
+
+        .logo-area {
+            display: flex;
+            align-items: baseline;
+            gap: 8px;
+        }
+
+        .logo-icon {
+            font-size: 30px;
+            color: #d97706;
+        }
+
+        .logo {
+            font-size: 1.9rem;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            background: linear-gradient(130deg, #2c4b32, #b45309);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            font-weight: 500;
+            color: #2f3e32;
+            transition: 0.2s;
+            font-size: 0.98rem;
+        }
+
+        .nav-links a:hover {
+            color: #d97706;
+        }
+
+        .cart-icon {
+            position: relative;
+            font-size: 1.4rem;
+        }
+
+        .cart-badge {
+            position: absolute;
+            top: -9px;
+            right: -12px;
+            background: #d97706;
+            color: white;
+            font-size: 0.7rem;
+            font-weight: 700;
+            border-radius: 30px;
+            padding: 2px 6px;
+            min-width: 18px;
+            text-align: center;
+        }
+
+        /* about hero */
+        .about-hero {
+            background: linear-gradient(115deg, #fef3e2 0%, #faecd9 100%);
+            padding: 70px 0 60px;
+            text-align: center;
+        }
+
+        .about-hero h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            color: #2c3e24;
+            letter-spacing: -0.02em;
+            margin-bottom: 20px;
+        }
+
+        .about-hero .tagline {
+            font-size: 1.25rem;
+            color: #6b4e2e;
+            max-width: 680px;
+            margin: 0 auto;
+        }
+
+        .story-section {
+            padding: 80px 0;
+            background: white;
+        }
+
+        .story-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .story-text {
+            flex: 1.2;
+        }
+
+        .story-text h2 {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #2c4b32;
+            margin-bottom: 24px;
+        }
+
+        .story-text p {
+            margin-bottom: 20px;
+            color: #3d4a3a;
+            font-size: 1.05rem;
+        }
+
+        .story-image {
+            flex: 1;
+            border-radius: 36px;
+            overflow: hidden;
+            box-shadow: 0 20px 35px -10px rgba(0,0,0,0.1);
+        }
+
+        .story-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.3s;
+        }
+
+        .story-image:hover img {
+            transform: scale(1.02);
+        }
+
+        /* mission values */
+        .values-section {
+            background: #fef8f2;
+            padding: 70px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 55px;
+            color: #2c4b32;
+        }
+
+        .values-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 35px;
+            justify-content: center;
+        }
+
+        .value-card {
+            background: white;
+            padding: 34px 24px;
+            border-radius: 32px;
+            flex: 1;
+            min-width: 240px;
+            text-align: center;
+            transition: 0.25s;
+            border: 1px solid #f0e3d6;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.02);
+        }
+
+        .value-card i {
+            font-size: 2.6rem;
+            color: #d97706;
+            margin-bottom: 20px;
+        }
+
+        .value-card h3 {
+            margin-bottom: 15px;
+            font-weight: 700;
+            color: #2c3e24;
+        }
+
+        /* team section */
+        .team-section {
+            padding: 80px 0;
+            background: white;
+        }
+
+        .team-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+            justify-content: center;
+        }
+
+        .team-member {
+            flex: 1;
+            min-width: 250px;
+            max-width: 280px;
+            text-align: center;
+            background: #fefaf5;
+            border-radius: 40px;
+            padding: 28px 18px 28px;
+            transition: 0.2s;
+            border: 1px solid #f0e3d6;
+        }
+
+        .member-img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 20px;
+            border: 4px solid #f0e2d2;
+        }
+
+        .team-member h3 {
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 6px;
+        }
+
+        .member-role {
+            color: #d97706;
+            font-weight: 600;
+            margin-bottom: 12px;
+            letter-spacing: 0.3px;
+        }
+
+        .member-bio {
+            font-size: 0.9rem;
+            color: #5b5a4e;
+        }
+
+        /* artisan spotlight */
+        .craftsman-spotlight {
+            background: #fff6ea;
+            padding: 70px 0;
+        }
+
+        .spotlight-inner {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 45px;
+            align-items: center;
+        }
+
+        .spotlight-img {
+            flex: 1;
+            border-radius: 32px;
+            overflow: hidden;
+        }
+
+        .spotlight-img img {
+            width: 100%;
+            display: block;
+        }
+
+        .spotlight-text {
+            flex: 1.2;
+        }
+
+        .spotlight-text h2 {
+            font-size: 1.9rem;
+            font-weight: 700;
+            color: #2c3e24;
+            margin-bottom: 20px;
+        }
+
+        .btn-primary {
+            background: #2c4b32;
+            color: white;
+            padding: 12px 28px;
+            border-radius: 44px;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            transition: 0.25s;
+            margin-top: 12px;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-primary:hover {
+            background: #1c3522;
+            transform: translateY(-2px);
+        }
+
+        /* footer */
+        footer {
+            background: #141f19;
+            color: #cfd8cf;
+            padding: 44px 0 28px;
+        }
+
+        .footer-grid {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 40px;
+        }
+
+        .footer-copyright {
+            text-align: center;
+            margin-top: 42px;
+            font-size: 0.75rem;
+            opacity: 0.7;
+        }
+
+        @media (max-width: 800px) {
+            .about-hero h1 {
+                font-size: 2.2rem;
+            }
+            .container {
+                padding: 0 20px;
+            }
+            .header-inner {
+                flex-direction: column;
+                gap: 14px;
+            }
+            .story-grid, .spotlight-inner {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header class="site-header">
+    <div class="container header-inner">
+        <div class="logo-area">
+            <i class="fas fa-fire logo-icon"></i>
+            <div class="logo">CartForge</div>
+        </div>
+        <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="privacy.html">Privacy</a>
+      <a href="terms.html">Terms</a>
+      <a href="about.html">About Us</a>
+            <a href="#" class="cart-icon">
+                <i class="fas fa-bag-shopping"></i>
+                <span class="cart-badge">0</span>
+            </a>
+        </div>
+    </div>
+</header>
+
+<main>
+    <!-- about hero -->
+    <section class="about-hero">
+        <div class="container">
+            <h1>Behind the Forge <i class="fas fa-gem" style="color:#d97706;"></i></h1>
+            <p class="tagline">We are a collective of artisans, dreamers, and makers — reshaping the way the world interacts with handcrafted goods.</p>
+        </div>
+    </section>
+
+    <!-- our story -->
+    <section class="story-section">
+        <div class="container story-grid">
+            <div class="story-text">
+                <h2>Our story started with a hammer and a spark</h2>
+                <p>CartForge was founded in 2024 by a small group of craftspeople who believed that mass production had stolen the soul from everyday objects. We envisioned a space where authenticity, sustainability, and raw creativity could thrive — a digital forge connecting makers with those who appreciate the beauty of the imperfect.</p>
+                <p>What began as a weekend market stall in Los Angeles has grown into a global community. Today, we collaborate with over 50 independent artisans from 12 countries, each piece carrying the unique fingerprint of its creator. From hand-thrown ceramics to forged metalwork, every item tells a story.</p>
+                <p><strong>We don’t just sell products — we preserve traditions, empower creators, and celebrate the human touch.</strong></p>
+            </div>
+            <div class="story-image">
+                <img src="https://picsum.photos/id/101/600/500" alt="Artisan workspace CartForge" loading="lazy">
+            </div>
+        </div>
+    </section>
+
+    <!-- core values -->
+    <section class="values-section">
+        <div class="container">
+            <h2 class="section-title">⚒️ Our forged values</h2>
+            <div class="values-grid">
+                <div class="value-card"><i class="fas fa-hand-peace"></i><h3>Radical Transparency</h3><p>We share the origins, materials, and stories behind every piece.</p></div>
+                <div class="value-card"><i class="fas fa-leaf"></i><h3>Earth stewardship</h3><p>Zero-waste packaging, recycled metals, and ethical sourcing.</p></div>
+                <div class="value-card"><i class="fas fa-hand-holding-heart"></i><h3>Fair forge wages</h3><p>Artisans earn 70%+ of each sale — no exploitation, ever.</p></div>
+                <div class="value-card"><i class="fas fa-infinity"></i><h3>Generational craft</h3><p>We invest in workshops, apprenticeships & tool libraries.</p></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- meet the team with unique images -->
+    <section class="team-section">
+        <div class="container">
+            <h2 class="section-title">🔨 The souls behind CartForge</h2>
+            <div class="team-grid">
+                <div class="team-member">
+                    <img class="member-img" src="https://randomuser.me/api/portraits/women/68.jpg" alt="Elena Marchetti" loading="lazy">
+                    <h3>Elena Marchetti</h3>
+                    <div class="member-role">Founder & Master Metalsmith</div>
+                    <p class="member-bio">Former architect turned blacksmith. Elena believes that metal carries memory — she forges heirloom pieces that last generations.</p>
+                </div>
+                <div class="team-member">
+                    <img class="member-img" src="https://randomuser.me/api/portraits/men/32.jpg" alt="David Okafor" loading="lazy">
+                    <h3>David Okafor</h3>
+                    <div class="member-role">Ceramics Director</div>
+                    <p class="member-bio">David learned pottery from his grandmother in Nigeria. He blends ancestral techniques with modern glazes.</p>
+                </div>
+                <div class="team-member">
+                    <img class="member-img" src="https://randomuser.me/api/portraits/women/45.jpg" alt="Maya Lin" loading="lazy">
+                    <h3>Maya Lin</h3>
+                    <div class="member-role">Sustainability Lead</div>
+                    <p class="member-bio">Environmental scientist ensuring every supply chain decision respects the planet. Zero-waste warrior.</p>
+                </div>
+                <div class="team-member">
+                    <img class="member-img" src="https://randomuser.me/api/portraits/men/75.jpg" alt="Reyansh Kapoor" loading="lazy">
+                    <h3>Reyansh Kapoor</h3>
+                    <div class="member-role">Community Curator</div>
+                    <p class="member-bio">Reyansh travels the globe finding hidden artisan talents and brings their stories to CartForge.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- artisan spotlight (different image and story) -->
+    <section class="craftsman-spotlight">
+        <div class="container spotlight-inner">
+            <div class="spotlight-img">
+                <img src="https://picsum.photos/id/79/600/450" alt="Woodworker at bench" loading="lazy">
+            </div>
+            <div class="spotlight-text">
+                <h2><i class="fas fa-tree"></i> Meet our wood whisperers</h2>
+                <p>In the highlands of Oaxaca and the forests of Oregon, our wood artisans source fallen timber and transform it into functional sculpture. Each cutting board, serving platter, and carved tool carries the grain’s natural poetry — no two are ever identical.</p>
+                <p>We are proud to plant 3 trees for every wooden product sold, ensuring that our craft gives back to the earth.</p>
+                <a href="#" class="btn-primary" id="exploreBtn">Explore wood collection <i class="fas fa-arrow-right"></i></a>
+            </div>
+        </div>
+    </section>
+    
+</main>
+
+<footer>
+    <div class="container">
+        <div class="footer-grid">
+            <div><i class="fas fa-hammer"></i> <strong>CartForge</strong><br/>© 2026 · forged with integrity</div>
+            <div>Studio<br/>Sustainability<br/>Artisan program</div>
+            <div>Support<br/>Returns<br/>Contact</div>
+            <div><i class="fab fa-instagram"></i> <i class="fab fa-pinterest"></i> <i class="fab fa-tiktok"></i> <i class="fab fa-youtube"></i></div>
+        </div>
+        <div class="footer-copyright">Handcrafted world — Where every piece has a signature, and every signature has a story.</div>
+    </div>
+</footer>
+
+<script>
+    // cart badge simulation
+    const cartBadge = document.querySelector('.cart-badge');
+    if (cartBadge) cartBadge.innerText = '0';
+
+    // interactive demo for explore button (wood collection)
+    const exploreBtn = document.getElementById('exploreBtn');
+    if (exploreBtn) {
+        exploreBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            alert("🌲 The Wood Collection: Hand-carved, never duplicated. Explore functional art that ages like fine wine. (demo)");
+        });
+    }
+
+    // newsletter button alert
+    const newsBtn = document.querySelector('.btn-primary[href="#"]');
+    const joinButtons = document.querySelectorAll('.btn-primary');
+    joinButtons.forEach(btn => {
+        if (btn.innerText.includes('Join our newsletter')) {
+            btn.addEventListener('click', (e) => {
+                e.preventDefault();
+                alert("📬 Thank you for joining the CartForge community! Stay tuned for artisan stories and exclusive drops.");
+            });
+        }
+    });
+
+    // artisan application demo
+    const applyBtn = document.querySelector('.btn-outline');
+    if (applyBtn && applyBtn.innerText.includes('Artisan')) {
+        applyBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            alert("✨ We'd love to hear your craft story. Our artisan team will reach out within 48 hours.");
+        });
+    }
+
+    console.log('CartForge About Us — rich brand story, team showcase, and artisan spotlight');
+</script>
+</body>
+</html>
